@@ -1675,58 +1675,6 @@ best_model = pd.DataFrame({'Actual' : y_test,
 best_model.to_excel("Bwth_Best_Model_Predictions.xlsx", index = False)
 
 
-""" Additional Model
-
-Dependent Variable:bwght (Birthweight)
-Independent Variable:fage,new_mage,cigs,drink,avg_combined_educ
-(Monther age >55 or <=55)
-
-Test score = 70.5%
-
-We didn't chose it as our best model because father and mother age are highly 
-correlated and both of them individually stand significant but not together.
-
-
-X = birth[['new_mage' ,
-               'cigs' ,
-               'drink',
-               'avg_combined_educ',
-               'fage'
-               ]]
-
-y = birth['bwght']
-
-X_train, X_test, y_train, y_test = train_test_split(
-                                                    X,
-                                                    y,
-                                                    test_size = 0.10,
-                                                    random_state = 508)
-
-ridge = Ridge (alpha = 0.1, normalize = True)
-
-ridge.fit(X_train, y_train)
-
-ridge_y_pred = ridge.predict(X_test)
-
-print('Training Score', ridge.score(X_train, y_train))
-print('Testing Score:', ridge.score(X_test, y_test))
-
-ridge_train_score = (ridge.score(X_train, y_train)).round(2)
-
-ridge_test_score = (ridge.score(X_test, y_test)).round(2)
-
-diff_ridge_score = ((ridge.score(X_train, y_train)) 
-                     - (ridge.score(X_test, y_test))).round(2)
-
-
-mape_Ridge = mean_absolute_percentage_error (y_test, ridge_y_pred).round(2)
-
-mae_Ridge = mean_absolute_error(y_test, ridge_y_pred).round(2)
-
-mse_Ridge = mean_squared_error(y_test, ridge_y_pred).round(2)
-"""
-
-
 
 
 
